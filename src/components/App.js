@@ -26,25 +26,35 @@ function App() {
   function onAreaChange(id, areaObject) {
     // checks for area limit
     // if limit not exceeded, patches host's area property
-    fetch(`http://localhost:3001/hosts/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(areaObject),
-    })
-      .then((response) => response.json())
-      .then((updatedHost) => {
-        const updatedHosts = hosts.map((host) => {
-          if (host.id === id) {
-            return updatedHost;
-          } else {
-            return host;
-          }
+
+    const hostsInArea = hosts.filter(
+      (host) => host.area === areaObject.area
+    ).length;
+    const areaLimit = areas.find((area) => area.name === areaObject.area).limit;
+
+    if (hostsInArea < areaLimit) {
+      fetch(`http://localhost:3001/hosts/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(areaObject),
+      })
+        .then((response) => response.json())
+        .then((updatedHost) => {
+          const updatedHosts = hosts.map((host) => {
+            if (host.id === id) {
+              return updatedHost;
+            } else {
+              return host;
+            }
+          });
+          setSelectedHost(updatedHost);
+          setHosts(updatedHosts);
         });
-        setSelectedHost(updatedHost);
-        setHosts(updatedHosts);
-      });
+    } else {
+      console.log("area limit exceeded");
+    }
   }
 
   function onRadioClick(id, activeStatusObject) {
@@ -79,7 +89,12 @@ function App() {
 
   return (
     <Segment id="app">
-      <WestworldMap />
+      <WestworldMap
+        hosts={hosts}
+        areas={areas}
+        selectedHost={selectedHost}
+        setSelectedHost={setSelectedHost}
+      />
       <Headquarters
         hosts={hosts}
         areas={areas}

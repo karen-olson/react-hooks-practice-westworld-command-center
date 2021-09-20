@@ -2,8 +2,8 @@ import React from "react";
 import Host from "./Host";
 import { Card } from "semantic-ui-react";
 
-function HostList({ hosts, selectedHost, setSelectedHost }) {
-  const hostsToDisplay = hosts
+function HostList({ hostsToDisplay, selectedHost, setSelectedHost }) {
+  const hostCards = hostsToDisplay
     // .filter((host) => host.active === false)
     .map((host) => (
       <Host
@@ -14,7 +14,7 @@ function HostList({ hosts, selectedHost, setSelectedHost }) {
       />
     ));
 
-  return <Card.Group itemsPerRow={6}>{hostsToDisplay}</Card.Group>;
+  return <Card.Group itemsPerRow={6}>{hostCards}</Card.Group>;
 }
 
 export default HostList;

@@ -1,18 +1,25 @@
 import React from "react";
+import HostList from "./HostList";
 import "../stylesheets/Area.css";
 
-function Area() {
+function Area({ hosts, area, selectedHost, setSelectedHost }) {
+  // clean up areaName
+  const areaName = area.name.split("_");
+
+  const activeHosts = hosts.filter((host) => host.active === true);
+
+  const hostsInArea = activeHosts.filter((host) => host.area === area.name);
+
   return (
-    <div
-      className="area"
-      id={
-        /* Pass in the area name here to make sure this is styled correctly */ "id"
+    <div className="area" id={area.name}>
+      <h3 className="labels">{areaName}</h3>
+      {
+        <HostList
+          hostsToDisplay={hostsInArea}
+          selectedHost={selectedHost}
+          setSelectedHost={setSelectedHost}
+        />
       }
-    >
-      <h3 className="labels">
-        {/* Don't just pass in the name from the data...clean that thing up */}
-      </h3>
-      {/* See Checkpoint 1 item 2 in the Readme for a clue as to what goes here */}
     </div>
   );
 }

@@ -4,6 +4,8 @@ import { Segment } from "semantic-ui-react";
 
 function ColdStorage({ hosts, selectedHost, setSelectedHost }) {
   // console.log("selected host: ", selectedHost);
+  const inactiveHosts = hosts.filter((host) => host.active === false);
+
   return (
     <Segment.Group className="HQComps">
       <Segment compact>
@@ -11,7 +13,7 @@ function ColdStorage({ hosts, selectedHost, setSelectedHost }) {
       </Segment>
       <Segment compact>
         <HostList
-          hosts={hosts}
+          hostsToDisplay={inactiveHosts}
           selectedHost={selectedHost}
           setSelectedHost={setSelectedHost}
         />
