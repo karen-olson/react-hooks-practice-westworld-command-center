@@ -3,11 +3,13 @@ import { Segment } from "semantic-ui-react";
 import "../stylesheets/App.css";
 import Headquarters from "./Headquarters";
 import WestworldMap from "./WestworldMap";
+import { Log } from "../services/Log";
 
 function App() {
   const [hosts, setHosts] = useState([]);
   const [areas, setAreas] = useState([]);
-  const [selectedHost, setSelectedHost] = useState({});
+  const [selectedHost, setSelectedHost] = useState(null);
+  const [logs, setLogs] = useState([]);
 
   // fetch request for hosts & areas arrays
 
@@ -51,9 +53,16 @@ function App() {
           });
           setSelectedHost(updatedHost);
           setHosts(updatedHosts);
+
+          // const newLog = Log.notify(
+          //   `Notify: ${updatedHost.firstName} set in area ${updatedHost.area}`
+          // );
+          // setLogs([newLog, ...logs]);
         });
     } else {
-      console.log("area limit exceeded");
+      console.log("too many hosts");
+      // Log.error(`Error: Too many hosts. Cannot add host to area`);
+      // fix formatting w/ host name and area name
     }
   }
 
@@ -81,10 +90,27 @@ function App() {
       });
   }
 
-  function filterActive() {
-    // filters active/decommissioned hosts.
-    // nondestructively creates activeHosts array to send to WWMap
-    //    and decommissionedHosts array to send to HQ
+  function onActivateAll(activatedStatus) {
+    const updatedHosts = hosts.map((host) => {
+      return { ...host, active: activatedStatus };
+    });
+
+    setHosts(updatedHosts);
+
+    // const patchedHosts = hosts.forEach((host) => {
+    //   const updatedHost = { ...host, active: activatedStatus };
+    //   console.log("id: ", host.id);
+
+    //   fetch(`http://localhost:3001/host/${host.id}`, {
+    //     method: "PATCH",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(updatedHost),
+    //   })
+    //     .then((response) => response.json())
+    //     .then((data) => console.log(data));
+    // });
   }
 
   return (
@@ -102,6 +128,9 @@ function App() {
         onRadioClick={onRadioClick}
         selectedHost={selectedHost}
         setSelectedHost={setSelectedHost}
+        onActivateAll={onActivateAll}
+        logs={logs}
+        setLogs={setLogs}
       />
     </Segment>
   );

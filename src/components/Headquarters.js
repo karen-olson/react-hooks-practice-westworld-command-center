@@ -12,6 +12,9 @@ function Headquarters({
   onRadioClick,
   selectedHost,
   setSelectedHost,
+  onActivateAll,
+  logs,
+  setLogs,
 }) {
   // console.log("selected host: ", selectedHost);
   return (
@@ -34,7 +37,7 @@ function Headquarters({
         />
       </Grid.Column>
       <Grid.Column width={3}>
-        <LogPanel />
+        <LogPanel onActivateAll={onActivateAll} logs={logs} setLogs={setLogs} />
       </Grid.Column>
     </Grid>
   );

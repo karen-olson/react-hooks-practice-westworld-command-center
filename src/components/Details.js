@@ -18,19 +18,19 @@ function Details({
 
   return (
     <Segment id="details" className="HQComps">
-      {selectedHost === {} ? (
+      {console.log(selectedHost === {})}
+      {selectedHost ? (
+        <HostInfo
+          hosts={hosts}
+          selectedHost={selectedHost}
+          setSelectedHost={setSelectedHost}
+          areas={areas}
+          onAreaChange={onAreaChange}
+          onRadioClick={onRadioClick}
+        />
+      ) : (
         <Image size="medium" src={Images.westworldLogo} />
-      ) : null}
-
-      {/* define props for HostInfo */}
-      <HostInfo
-        hosts={hosts}
-        selectedHost={selectedHost}
-        setSelectedHost={setSelectedHost}
-        areas={areas}
-        onAreaChange={onAreaChange}
-        onRadioClick={onRadioClick}
-      />
+      )}
     </Segment>
   );
 }

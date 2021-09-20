@@ -57,7 +57,7 @@
       "active": true,
       "imageUrl": "https://vignette.wikia.nocookie.net/westworld/images/b/b2/Angela_Reunion.jpg/revision/latest/scale-to-width-down/310?cb=20180509174920",
       "gender": "Female",
-      "area": "under_construction",
+      "area": "badlands",
       "authorized": false
     },
     {
@@ -77,7 +77,7 @@
       "active": true,
       "imageUrl": "https://vignette.wikia.nocookie.net/westworld/images/c/cb/Lawrence_Reunion.jpg/revision/latest/scale-to-width-down/310?cb=20180613182747",
       "gender": "Male",
-      "area": "under_construction",
+      "area": "python_pass",
       "authorized": false
     },
     {
@@ -94,7 +94,7 @@
       "id": 10,
       "firstName": "Clementine",
       "lastName": "Pennyfeather",
-      "active": false,
+      "active": true,
       "imageUrl": "https://vignette.wikia.nocookie.net/westworld/images/4/44/Clementine_The_Riddle_of_the_Sphinx.jpg/revision/latest?cb=20180516165617",
       "gender": "Female",
       "area": "badlands",
@@ -107,7 +107,7 @@
       "active": false,
       "imageUrl": "https://vignette.wikia.nocookie.net/westworld/images/7/78/Armistice_Akane_No_Mai.jpg/revision/latest/scale-to-width-down/310?cb=20180517164314",
       "gender": "Female",
-      "area": "pariah",
+      "area": "badlands",
       "authorized": false
     },
     {
@@ -127,7 +127,7 @@
       "active": true,
       "imageUrl": "https://vignette.wikia.nocookie.net/westworld/images/3/3b/Major_Craddock_The_Riddle_of_the_Sphinx.jpg/revision/latest?cb=20180511205852",
       "gender": "Male",
-      "area": "pariah",
+      "area": "python_pass",
       "authorized": false
     },
     {
