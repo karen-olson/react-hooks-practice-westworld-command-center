@@ -63,7 +63,10 @@ function App() {
         });
     } else {
       console.log("too many hosts");
-      // Log.error(`Error: Too many hosts. Cannot add host to area`);
+      const newLog = Log.error(
+        `Error: Too many hosts. Cannot add host to area.`
+      );
+      setLogs([newLog, ...logs]);
       // fix formatting w/ host name and area name
     }
   }
