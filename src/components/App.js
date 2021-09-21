@@ -52,12 +52,14 @@ function App() {
             }
           });
           setSelectedHost(updatedHost);
+          console.log("selected host updated");
           setHosts(updatedHosts);
+          console.log("hosts updated");
 
-          // const newLog = Log.notify(
-          //   `Notify: ${updatedHost.firstName} set in area ${updatedHost.area}`
-          // );
-          // setLogs([newLog, ...logs]);
+          const newLog = Log.notify(
+            `Notify: ${updatedHost.firstName} set in area ${updatedHost.area}`
+          );
+          setLogs([newLog, ...logs]);
         });
     } else {
       console.log("too many hosts");

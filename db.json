@@ -87,7 +87,7 @@
       "active": false,
       "imageUrl": "https://vignette.wikia.nocookie.net/westworld/images/a/a9/Teddy_Flood_Phase_Space.jpg/revision/latest/scale-to-width-down/310?cb=20180526115338",
       "gender": "Male",
-      "area": "high_plains",
+      "area": "badlands",
       "authorized": false
     },
     {
@@ -97,7 +97,7 @@
       "active": true,
       "imageUrl": "https://vignette.wikia.nocookie.net/westworld/images/4/44/Clementine_The_Riddle_of_the_Sphinx.jpg/revision/latest?cb=20180516165617",
       "gender": "Female",
-      "area": "badlands",
+      "area": "python_pass",
       "authorized": false
     },
     {
