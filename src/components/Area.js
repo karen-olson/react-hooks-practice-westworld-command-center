@@ -4,10 +4,10 @@ import "../stylesheets/Area.css";
 
 function Area({ hosts, area, selectedHost, setSelectedHost }) {
   // clean up areaName
-  // const areaName = area.name
-  //   .split("_")
-  //   .map((word) => word[0].toUppercase + word.slice(1))
-  //   .join(" ");
+  const areaName = area.name
+    .split("_")
+    .map((word) => word[0].toUpperCase() + word.slice(1))
+    .join(" ");
 
   const activeHosts = hosts.filter((host) => host.active === true);
 
@@ -15,7 +15,7 @@ function Area({ hosts, area, selectedHost, setSelectedHost }) {
 
   return (
     <div className="area" id={area.name}>
-      <h3 className="labels">{area.name}</h3>
+      <h3 className="labels">{areaName}</h3>
       {
         <HostList
           hostsToDisplay={hostsInArea}

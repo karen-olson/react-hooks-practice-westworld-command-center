@@ -3,7 +3,6 @@ import HostList from "./HostList";
 import { Segment } from "semantic-ui-react";
 
 function ColdStorage({ hosts, selectedHost, setSelectedHost }) {
-  // console.log("selected host: ", selectedHost);
   const inactiveHosts = hosts.filter((host) => host.active === false);
 
   return (

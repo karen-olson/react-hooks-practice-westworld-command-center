@@ -18,7 +18,6 @@ function Details({
 
   return (
     <Segment id="details" className="HQComps">
-      {console.log(selectedHost === {})}
       {selectedHost ? (
         <HostInfo
           hosts={hosts}

@@ -52,22 +52,21 @@ function App() {
             }
           });
           setSelectedHost(updatedHost);
-          console.log("selected host updated");
           setHosts(updatedHosts);
-          console.log("hosts updated");
 
           const newLog = Log.notify(
-            `Notify: ${updatedHost.firstName} set in area ${updatedHost.area}`
+            `Notify: ${updatedHost.firstName} set in area ${updatedHost.area
+              .split("_")
+              .map((word) => word[0].toUpperCase() + word.slice(1))
+              .join(" ")}`
           );
           setLogs([newLog, ...logs]);
         });
     } else {
-      console.log("too many hosts");
       const newLog = Log.error(
         `Error: Too many hosts. Cannot add host to area.`
       );
       setLogs([newLog, ...logs]);
-      // fix formatting w/ host name and area name
     }
   }
 
@@ -92,6 +91,14 @@ function App() {
         });
         setSelectedHost(updatedHost);
         setHosts(updatedHosts);
+
+        if (activeStatusObject.active === true) {
+          const newLog = Log.warn(`Activated ${updatedHost.firstName}`);
+          setLogs([newLog, ...logs]);
+        } else {
+          const newLog = Log.notify(`Decommissioned ${updatedHost.firstName}`);
+          setLogs([newLog, ...logs]);
+        }
       });
   }
 
@@ -102,20 +109,13 @@ function App() {
 
     setHosts(updatedHosts);
 
-    // const patchedHosts = hosts.forEach((host) => {
-    //   const updatedHost = { ...host, active: activatedStatus };
-    //   console.log("id: ", host.id);
-
-    //   fetch(`http://localhost:3001/host/${host.id}`, {
-    //     method: "PATCH",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(updatedHost),
-    //   })
-    //     .then((response) => response.json())
-    //     .then((data) => console.log(data));
-    // });
+    if (activatedStatus === true) {
+      const newLog = Log.warn(`Activating all hosts!`);
+      setLogs([newLog, ...logs]);
+    } else {
+      const newLog = Log.notify(`Decommissioning all hosts.`);
+      setLogs([newLog, ...logs]);
+    }
   }
 
   return (

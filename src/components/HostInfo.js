@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Radio,
   Icon,
@@ -10,19 +10,16 @@ import {
 } from "semantic-ui-react";
 import "../stylesheets/HostInfo.css";
 
-function HostInfo({
-  hosts,
-  selectedHost,
-  setSelectedHost,
-  areas,
-  onAreaChange,
-  onRadioClick,
-}) {
-
-  // const formattedNames = areas.names.map(area => )
-
+function HostInfo({ selectedHost, areas, onAreaChange, onRadioClick }) {
   const options = areas.map((area) => {
-    return { key: area.id, text: area.name, value: area.name };
+    return {
+      key: area.id,
+      text: area.name
+        .split("_")
+        .map((word) => word[0].toUpperCase() + word.slice(1))
+        .join(" "),
+      value: area.name,
+    };
   });
 
   function handleOptionChange(e, { value }) {

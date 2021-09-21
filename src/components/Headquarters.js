@@ -16,7 +16,6 @@ function Headquarters({
   logs,
   setLogs,
 }) {
-  // console.log("selected host: ", selectedHost);
   return (
     <Grid celled="internally">
       <Grid.Column width={8}>
